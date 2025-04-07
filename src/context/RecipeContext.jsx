@@ -1,38 +1,40 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const RecipeContext = createContext();
 
-export function RecipeProvider({ children }) {
+export const useRecipes = () => useContext(RecipeContext);
+
+export const RecipeProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const storedRecipes = JSON.parse(localStorage.getItem('recipes')) || [];
+    setRecipes(storedRecipes);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+  }, [recipes]);
 
   const addRecipe = (newRecipe) => {
-    setRecipes([...recipes, newRecipe]);
+    setRecipes((prev) => [...prev, newRecipe]);
+  };
+
+  const deleteRecipe = (recipeId, username) => {
+    setRecipes((prev) => prev.filter((recipe) => recipe.id !== recipeId || recipe.username !== username));
   };
 
   const updateRecipe = (updatedRecipe) => {
-    setRecipes(recipes.map((recipe) => (recipe.id === updatedRecipe.id ? updatedRecipe : recipe)));
-  };
-
-  const deleteRecipe = (id) => {
-    setRecipes(recipes.filter((recipe) => recipe.id !== id));
-  };
-
-  const toggleFavorite = (recipeId) => {
-    if (favorites.includes(recipeId)) {
-      setFavorites(favorites.filter((id) => id !== recipeId));
-    } else {
-      setFavorites([...favorites, recipeId]);
-    }
+    setRecipes((prev) =>
+      prev.map((recipe) =>
+        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+      )
+    );
   };
 
   return (
-    <RecipeContext.Provider value={{ recipes, addRecipe, updateRecipe, deleteRecipe, favorites, toggleFavorite }}>
+    <RecipeContext.Provider value={{ recipes, addRecipe, deleteRecipe, updateRecipe }}>
       {children}
     </RecipeContext.Provider>
   );
-}
-
-export function useRecipes() {
-  return useContext(RecipeContext);
-}
+};
