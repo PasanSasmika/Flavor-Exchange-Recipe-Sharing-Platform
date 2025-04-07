@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Grid, Card, CardContent, CardMedia, Typography, TextField, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { mockRecipes } from '../data/mockRecipes';
+import { useRecipes } from '../context/RecipeContext';
 
 const Home = () => {
   const [search, setSearch] = useState('');
+  const { recipes } = useRecipes();
 
-  
-  const filteredRecipes = mockRecipes.filter((recipe) =>
+  const filteredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(search.toLowerCase())
   );
 
