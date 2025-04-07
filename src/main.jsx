@@ -11,7 +11,6 @@ createRoot(document.getElementById('root')).render(
     <RecipeProvider>
 
     <App />
-    
     </RecipeProvider>
   </AuthProvider>
    

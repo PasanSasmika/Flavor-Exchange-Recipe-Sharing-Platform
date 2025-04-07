@@ -20,10 +20,10 @@ function Navbar() {
         </Typography>
         
         <Box>
-          {/* Home link */}
+          
           <Button color="inherit" component={Link} to="/">Home</Button>
           
-          {/* Show "Add Recipe" and "Favorites" only if the user is logged in */}
+          
           {user && (
             <>
               <Button color="inherit" component={Link} to="/create">Add Recipe</Button>
@@ -31,14 +31,14 @@ function Navbar() {
             </>
           )}
 
-          {/* Show Login/Signup if user is not logged in */}
+         
           {!user ? (
             <>
               <Button color="inherit" component={Link} to="/login">Login</Button>
               <Button color="inherit" component={Link} to="/signup">Sign Up</Button>
             </>
           ) : (
-            // If logged in, show Welcome message and Logout button
+           
             <>
               <Typography variant="body1" sx={{ mx: 2 }}>
                 Welcome, {user.name}!
