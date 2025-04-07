@@ -1,29 +1,39 @@
-import React, { useState } from 'react';
-import { Grid, Card, CardContent, CardMedia, Typography, TextField, Box } from '@mui/material';
+import React from 'react';
+import { Box, Grid, Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { mockRecipes } from '../data/mockRecipes';
+import { useAuth } from '../context/AuthContext';
 
-const Home = () => {
-  const [search, setSearch] = useState('');
+const Favorites = () => {
+  const { user, favorites } = useAuth();
 
-  
-  const filteredRecipes = mockRecipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(search.toLowerCase())
-  );
+  if (!user) {
+    return (
+      <Box sx={{ padding: 4 }}>
+        <Typography variant="h5" color="text.secondary">
+          Please login to view your favorite recipes.
+        </Typography>
+      </Box>
+    );
+  }
+
+  if (favorites.length === 0) {
+    return (
+      <Box sx={{ padding: 4 }}>
+        <Typography variant="h5" color="text.secondary">
+          You have no favorite recipes yet.
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ padding: 4 }}>
-      <TextField
-        fullWidth
-        label="Search Recipes"
-        variant="outlined"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        sx={{ mb: 4 }}
-      />
+      <Typography variant="h4" component="h1" sx={{ mb: 4 }}>
+        Your Favorite Recipes
+      </Typography>
 
       <Grid container spacing={4}>
-        {filteredRecipes.map((recipe) => (
+        {favorites.map((recipe) => (
           <Grid item xs={12} sm={6} md={4} key={recipe.id}>
             <Card>
               <CardMedia
@@ -43,9 +53,9 @@ const Home = () => {
                   Rating: {recipe.rating} ⭐
                 </Typography>
                 <Link to={`/recipe/${recipe.id}`} style={{ textDecoration: 'none' }}>
-                  <Typography variant="body2" color="primary">
+                  <Button size="small" color="primary">
                     View Details
-                  </Typography>
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
@@ -56,4 +66,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Favorites;
