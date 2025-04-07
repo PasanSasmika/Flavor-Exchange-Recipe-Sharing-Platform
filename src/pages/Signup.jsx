@@ -15,9 +15,11 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     
     login(form);
+    localStorage.setItem('user', JSON.stringify(form));
+
     navigate('/');
   };
 

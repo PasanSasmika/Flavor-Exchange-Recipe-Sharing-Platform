@@ -16,10 +16,16 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+  
    
-    const mockUser = { name: 'Test User', email: form.email };
-    login(mockUser);
-    navigate('/');
+    if (storedUser && storedUser.email === form.email && storedUser.password === form.password) {
+      login(storedUser);
+      navigate('/');
+    } else {
+      alert('Invalid email or password. Please sign up first.');
+    }
   };
 
   return (
