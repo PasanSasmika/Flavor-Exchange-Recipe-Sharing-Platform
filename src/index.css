@@ -1,2 +1,6 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
+@theme {
+    --font-roboto: "Lilita", sans-serif; 
+  }
