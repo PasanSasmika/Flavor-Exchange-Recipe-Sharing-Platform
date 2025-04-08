@@ -27,27 +27,22 @@ const Home = () => {
         </div>
         
         <div className="relative max-w-md mx-auto">
-          <TextField
-            fullWidth
-            size="medium"
-            placeholder="Search recipes..."
-            variant="outlined"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="bg-white rounded-lg"
-            InputProps={{
-              className: "text-gray-700 pl-4 pr-12 py-2 font-medium",
-              endAdornment: (
-                <IconButton 
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                  aria-label="search"
-                >
-                  <FiSearch className="text-xl" />
-                </IconButton>
-              ),
-            }}
-          />
-        </div>
+  <div className="relative flex items-center">
+    <input
+      type="text"
+      placeholder="Search recipes..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="w-full pl-5 pr-12 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-200 shadow-sm text-gray-700 font-medium"
+    />
+    <button 
+      className="absolute right-3 text-gray-500 hover:text-blue-600 transition-colors"
+      aria-label="search"
+    >
+      <FiSearch className="w-5 h-5" />
+    </button>
+  </div>
+</div>
       </div>
 
       <div className="max-w-6xl mx-auto">
