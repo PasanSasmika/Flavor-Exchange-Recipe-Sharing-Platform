@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom"
-// import Home from "./pages/Home"
 import NavBar from "./components/NavBar"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import RecipeDetails from "./pages/RecipeDetails"
 import Favorites from "./pages/Favorites"
 import AddRecipe from "./pages/AddRecipe"
-import UserPages from "./pages/userPages/UserPages"
+import UserPages from "./pages/userPages/userPages"
+import Home from "./pages/Home"
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <NavBar />
     <Routes>
     <Route path="/" element={<UserPages />} />
-      {/* <Route path="/" element={<Home />} /> */}
+      <Route path="/recipes" element={<Home />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/recipe/:id" element={<RecipeDetails />} />
