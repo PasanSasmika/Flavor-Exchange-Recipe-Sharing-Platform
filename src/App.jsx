@@ -6,7 +6,7 @@ import Login from "./pages/Login"
 import RecipeDetails from "./pages/RecipeDetails"
 import Favorites from "./pages/Favorites"
 import AddRecipe from "./pages/AddRecipe"
-import UserPages from "./pages/userPages/userPages"
+import UserPages from "./pages/userPages/UserPages"
 
 
 function App() {
