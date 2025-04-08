@@ -22,6 +22,8 @@ function App() {
       <Route path="/recipe/:id" element={<RecipeDetails />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/create" element={<AddRecipe />} />
+      <Route path="/recipes" element={<Home/>} />
+
     </Routes>
   </>
   )
