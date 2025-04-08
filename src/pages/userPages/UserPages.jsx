@@ -16,7 +16,6 @@ function UserPages() {
             <main>
                 <MainPage/>
                 <LatestRecipes/>
-              <Home/>
               
             </main>
           }
