@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import MainPage from '../MainPage'
 import LatestRecipes from './LatestRecipies'
-import Home from '../Home'
 
 
 function UserPages() {
