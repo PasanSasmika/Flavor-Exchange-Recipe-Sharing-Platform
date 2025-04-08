@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRecipes } from '../../context/RecipeContext';
+import { Link } from 'react-router-dom';
 
 function LatestRecipes() {
     const [search, setSearch] = useState('');
@@ -13,17 +14,6 @@ function LatestRecipes() {
             <h2 className="font-primary font-bold text-2xl uppercase tracking-wider text-gray-800 mb-6">
                 Latest Recipes
             </h2>
-            
-            {/* Search Input */}
-            <div className="mb-8">
-                <input
-                    type="text"
-                    placeholder="Search Recipes"
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-            </div>
 
             {/* Recipes Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -35,7 +25,7 @@ function LatestRecipes() {
                         {/* Recipe Image */}
                         <div className="w-full h-48">
                             <img
-                                src={recipe.image}
+                                src={recipe.imageUrl}
                                 alt={recipe.title}
                                 className="w-full h-full object-cover"
                             />
@@ -60,6 +50,14 @@ function LatestRecipes() {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="mt-8 text-center">
+                <Link 
+                    to="/recipes" 
+                    className="inline-block px-6 py-2 bg-primary text-black rounded-md hover:bg-primary-dark transition-colors font-primary"
+                >
+                    View All Recipes
+                </Link>
             </div>
         </div>
     );
