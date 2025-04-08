@@ -6,7 +6,7 @@ import Login from "./pages/Login"
 import RecipeDetails from "./pages/RecipeDetails"
 import Favorites from "./pages/Favorites"
 import AddRecipe from "./pages/AddRecipe"
-import MainPage from "./pages/MainPage"
+import UserPages from "./pages/userPages/userPages"
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <>
     <NavBar />
     <Routes>
-    <Route path="/" element={<MainPage />} />
+    <Route path="/" element={<UserPages />} />
       {/* <Route path="/" element={<Home />} /> */}
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
