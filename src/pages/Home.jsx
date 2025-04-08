@@ -13,6 +13,7 @@ const Home = () => {
   );
 
   return (
+    // Recipes page
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
     
       <div className="max-w-6xl mx-auto mb-8 md:mb-12">
@@ -49,7 +50,6 @@ const Home = () => {
         </div>
       </div>
 
-      
       <div className="max-w-6xl mx-auto">
         {filteredRecipes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
