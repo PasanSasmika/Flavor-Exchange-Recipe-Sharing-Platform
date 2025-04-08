@@ -7,7 +7,6 @@ import RecipeDetails from "./pages/RecipeDetails"
 import Favorites from "./pages/Favorites"
 import AddRecipe from "./pages/AddRecipe"
 import UserPages from "./pages/userPages/UserPages"
-import Home from "./pages/Home"
 
 
 function App() {
