@@ -46,7 +46,7 @@ const Favorite = () => {
                     </Box>
 
                     <Link
-                      to={`/recipe/${recipe.id}`}
+                     to={`/recipe/${recipe.id}`} 
                       className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium text-sm"
                     >
                       View recipe

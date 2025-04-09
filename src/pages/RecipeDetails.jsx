@@ -153,7 +153,6 @@ const RecipeDetails = () => {
             </List>
           </Box>
 
-          {/* Action Buttons */}
           {user?.username === recipe.username && (
             <Box className="flex gap-4 mt-8">
               <Button 
@@ -175,8 +174,7 @@ const RecipeDetails = () => {
                 Delete Recipe
               </Button>
             </Box>
-          )}
-        </Box>
+          )}   </Box>
       </Box>
     </Container>
   );
