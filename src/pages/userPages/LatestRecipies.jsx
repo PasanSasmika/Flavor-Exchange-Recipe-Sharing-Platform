@@ -54,7 +54,7 @@ function LatestRecipes() {
             <div className="mt-8 text-center">
                 <Link 
                     to="/recipes" 
-                    className="inline-block px-6 py-2 bg-primary text-black rounded-md hover:bg-primary-dark transition-colors font-primary"
+                    className="inline-block px-6 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors font-primary"
                 >
                     View All Recipes
                 </Link>

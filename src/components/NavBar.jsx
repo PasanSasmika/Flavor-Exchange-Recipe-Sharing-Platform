@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FaHome, FaSearch, FaUser, FaSignInAlt, FaUserPlus, FaSignOutAlt, FaBars, FaTimes, FaPlus, FaHeart, FaInfoCircle, FaEnvelope, FaPalette } from 'react-icons/fa';
+import { BiSolidPizza } from "react-icons/bi";
 import { HiUserCircle } from 'react-icons/hi';
 import logo from '/logo.png';
 
@@ -30,6 +31,11 @@ function Navbar() {
       path: '/about',
       icon: <FaInfoCircle className="mr-3" />,
       label: 'About',
+    },
+    {
+      path: '/recipes',
+      icon: <BiSolidPizza  className="mr-3" />,
+      label: 'Recepes',
     },
   ];
 
