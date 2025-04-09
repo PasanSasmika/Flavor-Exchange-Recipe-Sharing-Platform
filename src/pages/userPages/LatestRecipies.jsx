@@ -23,20 +23,24 @@ function LatestRecipes() {
                         className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
                     >
                         {/* Recipe Image */}
-                        <div className="w-full h-48">
-                            <img
-                                src={recipe.imageUrl}
-                                alt={recipe.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                        <div className="w-full h-48 relative">
+                     <img src={recipe.imageUrl} alt={recipe.title} className="w-full h-full object-cover"/>
+                 <div className="absolute bottom-2 left-2  bg-opacity-70 text-white px-2 py-1 rounded-4xl border border-white">
+                   <p className="font-secondary text-sm">
+                          ⏰ {recipe.mealType}
+                 </p>
+        </div>
+        </div>
                         {/* Recipe Details */}
                         <div className="p-4">
-                            <h4 className="font-primary text-lg font-medium text-gray-900">
+                            <h4 className="font-primary text-lg font-bold text-gray-900">
                                 {recipe.title}
                             </h4>
+                            <h4 className="font-primary text-lg font-medium text-gray-900">
+                                {recipe.category}
+                            </h4>
                             <p className="font-secondary text-gray-600 mt-1">
-                                ⏰ {recipe.cookingTime}
+                                ⏰ {recipe.cookingTime} mins
                             </p>
                             <p className="font-secondary text-gray-600 mt-1">
                                 ⭐ {recipe.rating}

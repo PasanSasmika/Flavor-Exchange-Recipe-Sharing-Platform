@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Button, Typography, Container, Box, Divider, Chip, Rating } from '@mui/material';
+import { Button, Typography, Container, Box, Divider, Chip, Rating, List, ListItem, ListItemText, ListItemIcon } from '@mui/material';
 import { useRecipes } from '../context/RecipeContext';
 import { useAuth } from '../context/AuthContext';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import CircleIcon from '@mui/icons-material/Circle';
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const RecipeDetails = () => {
   };
 
   return (
-    <Container maxWidth="lg" className="py-12">
+    <Container maxWidth="lg" className="py-12 font-primary">
       <Box className="flex flex-col lg:flex-row gap-12">
         {/* Left Column - Image */}
         <Box className="lg:w-1/2">
@@ -44,27 +45,25 @@ const RecipeDetails = () => {
               >
                 {recipe.title}
               </Typography>
-            </Box>
-          </Box>
-          
-          <Box className="mt-6 flex flex-wrap gap-3">
-            <Chip
-             
-              label={`${recipe.cookingTime} mins`}
-              className="font-secondary bg-white border border-gray-200"
-            />
-            <Chip
-              
-              label={
-                <Rating 
-                  value={recipe.rating} 
-                  precision={0.5} 
-                  readOnly 
-                  size="small" 
+              <Box className="flex items-center gap-4 mt-2">
+                <Chip
+                  icon={<AccessTimeIcon />}
+                  label={`${recipe.cookingTime} mins`}
+                  className="font-secondary"
+                  size="small"
                 />
-              }
-              className="font-secondary bg-white border border-gray-200"
-            />
+                <Chip
+                  label={recipe.category}
+                  className="font-secondary bg-white/90 text-gray-800"
+                  size="small"
+                />
+                <Chip
+                  label={recipe.mealType}
+                  className="font-secondary bg-white/90 text-gray-800"
+                  size="small"
+                />
+              </Box>
+            </Box>
           </Box>
         </Box>
 
@@ -81,12 +80,45 @@ const RecipeDetails = () => {
                 Ingredients
               </Typography>
             </Box>
-            <Box className="pl-9">
-              <Typography className="font-secondary text-gray-700 whitespace-pre-line leading-relaxed">
-                {recipe.ingredients}
-              </Typography>
-            </Box>
+            <List dense>
+              {recipe.ingredients.map((ingredient, index) => (
+                <ListItem key={index} className="py-1">
+                  <ListItemIcon className="min-w-6">
+                    <CircleIcon sx={{ fontSize: '8px' }} />
+                  </ListItemIcon>
+                  <ListItemText primary={ingredient} />
+                </ListItem>
+              ))}
+            </List>
           </Box>
+
+          {/* Alternative Ingredients */}
+          {recipe.alternativeIngredients && recipe.alternativeIngredients.length > 0 && (
+            <>
+              <Divider className="my-4" />
+              <Box className="mb-8">
+                <Box className="flex items-center gap-3 mb-4">
+                  <LocalDiningIcon className="text-green-500" />
+                  <Typography 
+                    variant="h5" 
+                    className="font-primary text-xl font-semibold text-gray-800"
+                  >
+                    Alternative Ingredients
+                  </Typography>
+                </Box>
+                <List dense>
+                  {recipe.alternativeIngredients.map((alt, index) => (
+                    <ListItem key={index} className="py-1">
+                      <ListItemIcon className="min-w-6">
+                        <CircleIcon sx={{ fontSize: '8px', color: 'green' }} />
+                      </ListItemIcon>
+                      <ListItemText primary={alt} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </>
+          )}
 
           <Divider className="my-6" />
 
@@ -101,11 +133,24 @@ const RecipeDetails = () => {
                 Instructions
               </Typography>
             </Box>
-            <Box className="pl-9">
-              <Typography className="font-secondary text-gray-700 whitespace-pre-line leading-relaxed">
-                {recipe.instructions}
-              </Typography>
-            </Box>
+            <List>
+              {recipe.instructions.map((step, index) => (
+                <ListItem key={index} className="py-3">
+                  <ListItemText
+                    primary={
+                      <Box className="flex gap-4">
+                        <Box className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Typography className="text-primary-600 font-bold">{index + 1}</Typography>
+                        </Box>
+                        <Typography className="font-secondary text-gray-700">
+                          {step}
+                        </Typography>
+                      </Box>
+                    }
+                  />
+                </ListItem>
+              ))}
+            </List>
           </Box>
 
           {/* Action Buttons */}
