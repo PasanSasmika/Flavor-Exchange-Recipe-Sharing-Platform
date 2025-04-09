@@ -22,8 +22,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    // Remove only user details from local storage
-    localStorage.removeItem('user');
     setUser(null);
     setFavorites([]);
   };

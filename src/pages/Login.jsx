@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import home from '/bg.jpg';
 
 const Login = () => {
   const { login } = useAuth();
@@ -24,10 +25,10 @@ const Login = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-900 via-blue-900 to-black">
+    <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-900  to-black">
       {/* Background Image */}
       <img
-        src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=1920&auto=format&fit=crop"
+        src={home}
         alt="Background"
         className="absolute inset-0 w-full h-full object-cover opacity-20"
       />
