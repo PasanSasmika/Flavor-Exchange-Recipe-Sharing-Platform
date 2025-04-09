@@ -74,7 +74,7 @@ const Favorite = () => {
             <Box className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-sm">
               <FiStar className="w-16 h-16 mx-auto text-gray-400 mb-4" />
               <Typography variant="h5" component="h3" className="font-bold text-gray-700 mb-2">
-                Please log in to view favorites asdasda
+                Please log in to view favorites
               </Typography>
               <Typography variant="body1" className="text-gray-500">
                 Your saved recipes will appear here once you're logged in.

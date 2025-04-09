@@ -1,22 +1,65 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [errors, setErrors] = useState({ email: '', password: '' });
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 4;
+  };
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    
+    // Validate in real-time
+    if (name === 'email') {
+      setErrors({
+        ...errors,
+        email: value && !validateEmail(value) ? 'Please enter a valid email address' : ''
+      });
+    }
+    
+    if (name === 'password') {
+      setErrors({
+        ...errors,
+        password: value && !validatePassword(value) ? 'Password must be at least 4 characters' : ''
+      });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validate before submission
+    const emailValid = validateEmail(form.email);
+    const passwordValid = validatePassword(form.password);
+    
+    if (!emailValid || !passwordValid) {
+      setErrors({
+        email: !emailValid ? 'Please enter a valid email address' : '',
+        password: !passwordValid ?
+        toast.error("Password must be at least 4 characters long") : ''
+      });
+      return;
+    }
+    
+    // If validations pass
     login(form);
     localStorage.setItem('user', JSON.stringify(form));
     navigate('/');
   };
+
 
   return (
     <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-900 via-blue-900 to-black">
@@ -35,7 +78,7 @@ const Signup = () => {
 
           {/* Header */}
           <h2 className="text-xl text-white/80 text-center font-medium">
-            Welcome to xAI
+          Welcome to Flavor Exchange
           </h2>
           <h1 className="text-3xl md:text-4xl text-white text-center font-bold mt-2 mb-8">
             Sign Up
