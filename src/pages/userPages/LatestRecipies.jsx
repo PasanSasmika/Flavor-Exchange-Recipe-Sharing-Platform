@@ -17,7 +17,7 @@ function LatestRecipes() {
 
             {/* Recipes Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredRecipes.map((recipe) => (
+                {filteredRecipes.slice(0, 3).map((recipe) => (
                     <div
                         key={recipe.id}
                         className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
