@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import {FaHome,FaSearch,FaUser,FaSignInAlt,FaUserPlus,FaSignOutAlt,FaBars,FaTimes,FaPlus, FaHeart} from 'react-icons/fa';
+import { FaHome, FaSearch, FaUser, FaSignInAlt, FaUserPlus, FaSignOutAlt, FaBars, FaTimes, FaPlus, FaHeart, FaInfoCircle, FaEnvelope, FaPalette } from 'react-icons/fa';
 import { HiUserCircle } from 'react-icons/hi';
+import logo from '/logo.png';
 
 function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/login');
+    setIsProfileDropdownOpen(false);
   };
 
   const isActive = (path) => location.pathname === path;
@@ -24,14 +27,9 @@ function Navbar() {
       label: 'Home',
     },
     {
-      path: '/search',
-      icon: <FaSearch className="mr-3" />,
-      label: 'Search',
-    },
-    {
-      path: '/profile',
-      icon: <FaUser className="mr-3" />,
-      label: 'Profile',
+      path: '/about',
+      icon: <FaInfoCircle className="mr-3" />,
+      label: 'About',
     },
   ];
 
@@ -39,16 +37,18 @@ function Navbar() {
     <nav className="shadow-sm">
       <div className="max-w-7xl mx-auto px-5">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - Pushed completely left */}
-          <div className="flex-shrink-0 mr-10">
-            <Link to="/">
-              <span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent text-2xl font-bold whitespace-nowrap">
-                Flavor Exchange
-              </span>
-            </Link>
-          </div>
+          {/* Logo */}
+          <div className="flex-shrink-0 mr-2 mt-6">
+          <Link to="/">
+          <img 
+           src={logo}
+           alt="Flavor Exchange Logo" 
+           className="h-32 w-32 object-cover" 
+            />
+             </Link>
+</div>
           
-          {/* Desktop Navigation - Centered with optimal spacing */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center flex-1 mx-16 space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -62,21 +62,21 @@ function Navbar() {
             ))}
           </div>
           
-          {/* Desktop Auth Section - Right-aligned with good spacing */}
+          {/* Desktop Auth Section */}
           <div className="hidden md:flex items-center space-x-6">
             {!user ? (
               <>
                 <Link
                   to="/login"
-                  className="text-gray-600 hover:text-amber-600 px-5 py-2.5 rounded-lg text-sm font-medium flex items-center transition-colors duration-200"
+                  className="bg-amber-500 text-white hover:bg-amber-600 px-5 py-2.5 rounded-lg text-sm font-medium flex items-center transition-colors duration-200"
                 >
-                  <FaSignInAlt className="mr-3" /> Login
+                   Login
                 </Link>
                 <Link
                   to="/signup"
                   className="bg-amber-500 text-white hover:bg-amber-600 px-5 py-2.5 rounded-lg text-sm font-medium flex items-center transition-colors duration-200"
                 >
-                  <FaUserPlus className="mr-3" /> Sign Up
+                  Sign Up
                 </Link>
               </>
             ) : (
@@ -98,20 +98,35 @@ function Navbar() {
                   </Link>
                 </div>
                 
-                <div className="flex items-center space-x-4">
+                <div className="relative">
                   <button
-                    onClick={handleLogout}
-                    className="text-gray-600 hover:text-amber-600 hover:bg-amber-50 px-4 py-2.5 rounded-lg text-sm font-medium flex items-center transition-colors duration-200"
+                    onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
+                    className="flex items-center space-x-2 focus:outline-none"
                   >
-                    <FaSignOutAlt className="mr-3" /> 
-                  </button>
-                  
-                  <div className="flex items-center text-gray-700">
                     <HiUserCircle className="text-2xl text-amber-500" />
                     <span className="ml-2 text-sm font-medium hidden lg:inline">
                       Hi, {user.name}!
                     </span>
-                  </div>
+                  </button>
+                  
+                  {/* Profile Dropdown */}
+                  {isProfileDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+                      <Link
+                        to="/mode"
+                        onClick={() => setIsProfileDropdownOpen(false)}
+                        className=" px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 flex items-center"
+                      >
+                        <FaPalette className="mr-3" /> Theme
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 flex items-center"
+                      >
+                        <FaSignOutAlt className="mr-3" /> Logout
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -129,10 +144,9 @@ function Navbar() {
         </div>
       </div>
       
-      {/* Mobile Menu - Improved layout and spacing */}
+      {/* Mobile Menu */}
       <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="px-5 pt-3 pb-6 space-y-1 bg-white border-t border-amber-100">
-          {/* Main Links */}
           <div className="space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -145,9 +159,16 @@ function Navbar() {
                 {link.icon} {link.label}
               </Link>
             ))}
+            <Link
+              to="/mode"
+              className={` px-5 py-3.5 rounded-lg text-base font-medium flex items-center transition-colors duration-200
+                ${isActive('/mode') ? 'text-amber-600 bg-amber-50' : 'text-gray-600 hover:text-amber-600 hover:bg-amber-50'}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <FaPalette className="mr-4" /> Theme
+            </Link>
           </div>
           
-          {/* Conditional User Sections */}
           {!user ? (
             <div className="pt-4 space-y-3 border-t border-amber-100 mt-3">
               <Link
@@ -167,13 +188,11 @@ function Navbar() {
             </div>
           ) : (
             <div className="pt-4 space-y-3 border-t border-amber-100 mt-3">
-              {/* User Info */}
               <div className="px-5 py-3 flex items-center text-gray-700">
                 <HiUserCircle className="text-2xl mr-4 text-amber-500" />
                 <span className="text-base font-medium">Hi, {user.name}!</span>
               </div>
               
-              {/* User Actions - Single Column */}
               <div className="space-y-2">
                 <Link
                   to="/create"
