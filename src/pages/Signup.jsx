@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import home from '/bg.jpg';
 
 const Signup = () => {
   const { login } = useAuth();
@@ -62,14 +63,13 @@ const Signup = () => {
 
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-900 via-blue-900 to-black">
+    <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-900  to-black">
       {/* Background Image */}
       <img
-        src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=1920&auto=format&fit=crop"
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
-      />
-
+             src={home}
+             alt="Background"
+             className="absolute inset-0 w-full h-full object-cover opacity-20"
+           />
       {/* Signup Container */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
         <div className="relative w-full max-w-md bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20">
