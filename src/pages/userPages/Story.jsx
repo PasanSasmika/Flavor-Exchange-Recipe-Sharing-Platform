@@ -4,6 +4,7 @@ import food1 from '/image.jpg'; // Replace with actual food images
 import food2 from '/image.jpg';
 import food3 from '/image.jpg';
 import chef from '/image.jpg';
+import { Link } from 'react-router-dom';
 
 const Story = () => {
   return (
@@ -114,9 +115,9 @@ const Story = () => {
               </div>
             </div>
 
-            <button className="bg-rose-500 hover:bg-rose-600 text-white px-8 py-3 rounded-lg font-medium transition duration-300 shadow-lg">
+            <Link to="/favorites"><button className="bg-rose-500 hover:bg-rose-600 text-white px-8 py-3 rounded-lg font-medium transition duration-300 shadow-lg">
              View Favourities
-            </button>
+            </button></Link>
           </motion.div>
         </div>
       </div>
