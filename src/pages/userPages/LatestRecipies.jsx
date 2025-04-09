@@ -11,56 +11,68 @@ function LatestRecipes() {
 
     return (
         <div className="max-w-6xl mx-auto p-4">
-            <h2 className="font-primary font-bold text-2xl uppercase tracking-wider mb-6">
+            <h2 className="font-primary font-bold text-3xl uppercase tracking-wider mb-8 text-gray-800">
                 Latest Recipes
             </h2>
 
             {/* Recipes Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredRecipes.slice(0, 3).map((recipe) => (
                     <div
                         key={recipe.id}
-                        className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+                        className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group"
                     >
                         {/* Recipe Image */}
-                        <div className="w-full h-48 relative">
-                     <img src={recipe.imageUrl} alt={recipe.title} className="w-full h-full object-cover"/>
-                 <div className="absolute bottom-2 left-2  bg-opacity-70 text-white px-2 py-1 rounded-4xl border border-white">
-                   <p className="font-secondary text-sm">
-                          ⏰ {recipe.mealType}
-                 </p>
-        </div>
-        </div>
+                        <div className="w-full h-56 relative overflow-hidden">
+                            <img 
+                                src={recipe.imageUrl} 
+                                alt={recipe.title} 
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute bottom-3 left-3 bg-white/80 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full border border-white shadow-sm">
+                                <p className="font-secondary text-sm font-medium">
+                                    ⏰ {recipe.mealType}
+                                </p>
+                            </div>
+                        </div>
+                        
                         {/* Recipe Details */}
-                        <div className="p-4">
-                            <h4 className="font-primary text-lg font-bold text-gray-900">
-                                {recipe.title}
-                            </h4>
-                            <h4 className="font-primary text-lg font-medium text-gray-900">
-                                {recipe.category}
-                            </h4>
-                            <p className="font-secondary text-gray-600 mt-1">
-                                ⏰ {recipe.cookingTime} mins
-                            </p>
-                            <p className="font-secondary text-gray-600 mt-1">
-                                ⭐ {recipe.rating}
-                            </p>
-                            <a 
-                                href={`/recipe/${recipe.id}`} 
-                                className="font-secondary text-primary hover:underline mt-2 inline-block"
+                        <div className="p-5">
+                            <div className="flex justify-between items-start mb-2">
+                                <h4 className="font-primary text-xl font-bold text-gray-900 line-clamp-1">
+                                    {recipe.title}
+                                </h4>
+                                <span className="bg-primary/10 text-primary text-xs font-semibold px-2 py-1 rounded-full">
+                                    {recipe.category}
+                                </span>
+                            </div>
+                            
+                            <div className="flex items-center gap-4 text-gray-600 mt-3">
+                                <p className="font-secondary text-sm">
+                                    ⏱️ {recipe.cookingTime} mins
+                                </p>
+                                <p className="font-secondary text-sm">
+                                    ⭐ {recipe.rating}
+                                </p>
+                            </div>
+                            
+                            <Link
+                                to={`/recipe/${recipe.id}`}
+                                className="mt-4 inline-flex items-center font-secondary text-primary hover:text-primary-dark font-medium transition-colors group-hover:underline"
                             >
-                                View Details
-                            </a>
+                                View Details →
+                            </Link>
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="mt-8 text-center">
+            
+            <div className="mt-10 text-center">
                 <Link 
                     to="/recipes" 
-                    className="inline-block px-6 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors font-primary"
+                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white rounded-lg hover:shadow-md transition-all font-medium"
                 >
-                    View All Recipes
+                    View All Recipes 
                 </Link>
             </div>
         </div>

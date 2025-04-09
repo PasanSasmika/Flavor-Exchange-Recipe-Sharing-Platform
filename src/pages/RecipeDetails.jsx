@@ -75,7 +75,7 @@ const RecipeDetails = () => {
               <LocalDiningIcon className="text-primary-500" />
               <Typography 
                 variant="h5" 
-                className="font-primary text-xl font-semibold text-gray-800"
+                className="font-primary text-xl font-semibold "
               >
                 Ingredients
               </Typography>
@@ -101,7 +101,7 @@ const RecipeDetails = () => {
                   <LocalDiningIcon className="text-green-500" />
                   <Typography 
                     variant="h5" 
-                    className="font-primary text-xl font-semibold text-gray-800"
+                    className="font-primary text-xl font-semibold"
                   >
                     Alternative Ingredients
                   </Typography>
@@ -128,7 +128,7 @@ const RecipeDetails = () => {
               <MenuBookIcon className="text-primary-500" />
               <Typography 
                 variant="h5" 
-                className="font-primary text-xl font-semibold text-gray-800"
+                className="font-primary text-xl font-semibold"
               >
                 Instructions
               </Typography>
