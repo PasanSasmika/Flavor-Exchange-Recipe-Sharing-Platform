@@ -18,10 +18,10 @@ const Home = () => {
     
       <div className="max-w-6xl mx-auto mb-8 md:mb-12">
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 font-primary">
+          <h1 className="text-3xl md:text-4xl font-bold  mb-2 font-primary">
             Culinary Treasures
           </h1>
-          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl max-w-2xl mx-auto">
             Discover recipes that will delight your palate and inspire your cooking
           </p>
         </div>
