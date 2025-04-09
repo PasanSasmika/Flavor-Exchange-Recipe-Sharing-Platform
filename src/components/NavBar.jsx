@@ -36,7 +36,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-white border-b border-amber-100 shadow-sm">
+    <nav className="shadow-sm">
       <div className="max-w-7xl mx-auto px-5">
         <div className="flex items-center justify-between h-20">
           {/* Logo - Pushed completely left */}

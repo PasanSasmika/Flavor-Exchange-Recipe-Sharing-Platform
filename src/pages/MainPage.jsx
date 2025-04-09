@@ -13,12 +13,12 @@ const MainPage = () => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className="bg-gray-100 font-primary" // Added font-primary as default font
+      className="font-primary" 
     >
-      <div className="w-full flex flex-col md:flex-row bg-white min-h-screen">
+      <div className="w-full flex flex-col md:flex-row  min-h-screen">
         {/* Image Section - Left Side */}
         <motion.div 
-          className="md:w-1/2 h-[800px] relative"
+          className="md:w-1/2 h-[695px] relative"
           initial="hidden"
           animate="visible"
           variants={fadeInLeft}
@@ -30,7 +30,7 @@ const MainPage = () => {
           />
           {/* Social Media Links */}
           <motion.div 
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col space-y-4 p-3 bg-white bg-opacity-80 rounded-l-lg shadow-md"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col space-y-4 p-3  bg-opacity-80 rounded-l-lg shadow-md"
             variants={containerVariants}
           >
             <motion.a 
@@ -63,7 +63,7 @@ const MainPage = () => {
         {/* Content Section - Right Side */}
         <div className="md:w-1/2 h-[800px] p-8 md:p-12 lg:p-16 flex flex-col justify-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-primary font-bold lg:text-6xl text-gray-800 mb-4 leading-tight">
+            <h1 className="text-4xl md:text-5xl  font-bold lg:text-6xl text-gray-800 mb-4 leading-tight">
               Share Your Culinary Creations
             </h1>
             <p className="text-lg text-gray-600 mb-8 font-secondary font-bold">
