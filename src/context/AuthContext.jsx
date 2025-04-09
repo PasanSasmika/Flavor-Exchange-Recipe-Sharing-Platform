@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();
 
@@ -10,9 +10,10 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); 
   const [favorites, setFavorites] = useState([]); 
 
- 
   const login = (userData) => {
     setUser(userData);
+    // Store user data in local storage
+    localStorage.setItem('user', JSON.stringify(userData));
 
     const userFavorites = JSON.parse(
       localStorage.getItem(`favorites_${userData.username}`) || '[]'
@@ -21,6 +22,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    // Remove only user details from local storage
+    localStorage.removeItem('user');
     setUser(null);
     setFavorites([]);
   };
@@ -39,12 +42,26 @@ export const AuthProvider = ({ children }) => {
       JSON.stringify(newFavorites)
     );
   };
+
   const saveToFavorites = (recipe) => {
     setFavorites([...favorites, recipe]);
   };
 
+  // Check for logged-in user on initial load
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      setUser(userData);
+      const userFavorites = JSON.parse(
+        localStorage.getItem(`favorites_${userData.username}`) || '[]'
+      );
+      setFavorites(userFavorites);
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, favorites, saveToFavorites , toggleFavorite }}>
+    <AuthContext.Provider value={{ user, login, logout, favorites, saveToFavorites, toggleFavorite }}>
       {children}
     </AuthContext.Provider>
   );

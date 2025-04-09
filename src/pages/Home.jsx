@@ -55,7 +55,7 @@ const Home = () => {
             {filteredRecipes.map((recipe) => (
               <Card 
                 key={recipe.id} 
-                className="group h-full flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                className="group h-full flex flex-col bg-white rounded-xl overflow-hidden  transition-all duration-300 border border-gray-100"
                 elevation={0}
               >
                 <div className="relative overflow-hidden">
@@ -99,7 +99,7 @@ const Home = () => {
                 size="small"
               >
                 
-                <FiHeart className="w-5 h-5 ml-44" />
+                <FiHeart className="ml-44" />
               </IconButton>
             )}
                 </CardContent>

@@ -21,7 +21,11 @@ export const RecipeProvider = ({ children }) => {
   };
 
   const deleteRecipe = (recipeId, username) => {
-    setRecipes((prev) => prev.filter((recipe) => recipe.id !== recipeId || recipe.username !== username));
+    setRecipes((prev) =>
+      prev.filter((recipe) => 
+        !(recipe.id === recipeId && recipe.username === username)
+      )
+    );
   };
 
   const updateRecipe = (updatedRecipe) => {
