@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardMedia, TextField, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useRecipes } from '../context/RecipeContext';
-import {FiSearch, FiClock, FiArrowRight,FiFrown,FiStar} from 'react-icons/fi';
+import {FiSearch, FiClock, FiArrowRight,FiFrown,FiStar, FiHeart} from 'react-icons/fi';
+import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
   const [search, setSearch] = useState('');
   const { recipes } = useRecipes();
+  const { user, toggleFavorite, favorites } = useAuth();
 
   const filteredRecipes = recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(search.toLowerCase())
+    recipe.title.toLowerCase().includes(search.toLowerCase()) ||
+  recipe.mealType.toLowerCase().includes(search.toLowerCase())
+
   );
 
   return (
@@ -51,7 +55,7 @@ const Home = () => {
             {filteredRecipes.map((recipe) => (
               <Card 
                 key={recipe.id} 
-                className="group h-full flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200"
+                className="group h-full flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
                 elevation={0}
               >
                 <div className="relative overflow-hidden">
@@ -61,7 +65,7 @@ const Home = () => {
                     image={recipe.imageUrl || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}
                     alt={recipe.title}
                   />
-                   <div className="absolute bottom-2 left-2  bg-opacity-70 text-white px-2 py-1 rounded-4xl border border-white">
+                   <div className="absolute bottom-2 left-2  bg-opacity-70  px-2 py-1 rounded-4xl border">
                    <p className="font-secondary text-sm">
                      {recipe.mealType}
                      </p>
@@ -89,6 +93,15 @@ const Home = () => {
                     View recipe
                     <FiArrowRight className="ml-1.5" />
                   </Link>
+                  {user && (
+              <IconButton
+                onClick={() => toggleFavorite(recipe)}
+                size="small"
+              >
+                
+                <FiHeart className="w-5 h-5 ml-44" />
+              </IconButton>
+            )}
                 </CardContent>
               </Card>
             ))}
