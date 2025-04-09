@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 import Home from '../Home'
 import MainPage from '../MainPage'
 import LatestRecipes from './LatestRecipies'
+import Story from './Story'
+import Footer from '../../components/Footer'
 
 
 function UserPages() {
@@ -16,7 +18,8 @@ function UserPages() {
             <main>
                 <MainPage/>
                 <LatestRecipes/>
-              
+                <Story/>
+                <Footer/>
             </main>
           }
         />
