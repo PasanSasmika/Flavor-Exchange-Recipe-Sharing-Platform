@@ -53,18 +53,18 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-900 transition-colors font-secondary"
             >
-              dribbble.com/example
+             flavorexchange/example
             </a>
             <a 
               href="mailto:contact@example.com" 
               className="text-gray-500 hover:text-gray-900 transition-colors font-secondary"
             >
-              contact@example.com
+              contact@flavorexchange.com
             </a>
           </div>
           
           <p className="text-gray-400 text-sm font-secondary">
-            © {new Date().getFullYear()} RecipeApp. All rights reserved.
+            © {new Date().getFullYear()} flavorexchange. All rights reserved.
           </p>
         </div>
       </div>

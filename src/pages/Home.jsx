@@ -61,6 +61,11 @@ const Home = () => {
                     image={recipe.imageUrl || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}
                     alt={recipe.title}
                   />
+                   <div className="absolute bottom-2 left-2  bg-opacity-70 text-white px-2 py-1 rounded-4xl border border-white">
+                   <p className="font-secondary text-sm">
+                     {recipe.mealType}
+                     </p>
+                 </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <CardContent className="flex-grow p-4 md:p-6">

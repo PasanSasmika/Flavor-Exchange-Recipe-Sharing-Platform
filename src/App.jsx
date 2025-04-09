@@ -10,6 +10,7 @@ import Home from "./pages/Home"
 import Mode from "./components/mode"
 import { useEffect, useState } from "react"
 import Story from "./pages/userPages/Story"
+import { Toaster } from "react-hot-toast"
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
     <NavBar />
+    <Toaster/>
     <Routes>
     <Route path="/" element={<UserPages />} />
       <Route path="/recipes" element={<Home />} />
