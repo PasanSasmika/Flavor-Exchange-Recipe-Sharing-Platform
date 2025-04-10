@@ -12,6 +12,7 @@ import { useEffect, useState } from "react"
 import Story from "./pages/userPages/Story"
 import { Toaster } from "react-hot-toast"
 import Favorite from "./pages/userPages/Favorites"
+import Edit from "./pages/userPages/Edit"
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <Route path="/favorites" element={<Favorite />} />
       <Route path="/create" element={<AddRecipe />} />
       <Route path="/about" element={<Story/>} />
+      <Route path="/edit/:id" element={<Edit/>} />
       <Route path="/mode" element={<Mode theme={theme} setTheme={setTheme} />} />
       </Routes>
   </>

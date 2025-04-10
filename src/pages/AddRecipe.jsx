@@ -86,6 +86,7 @@ const AddRecipe = () => {
     delete newRecipe.imageFile;
     delete newRecipe.imagePreview;
     addRecipe(newRecipe);
+    toast.success('Recipe added successfully')
     navigate('/');
   };
 
