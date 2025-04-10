@@ -11,21 +11,23 @@ const Mode = ({ theme, setTheme }) => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Theme Switcher</h1>
-      <select
-        className="select select-bordered mt-4"
-        value={theme}
-        onChange={(e) => setTheme(e.target.value)}
-      >
-        {daisyThemes.map((themeName) => (
-          <option key={themeName} value={themeName}>
-            {themeName.charAt(0).toUpperCase() + themeName.slice(1)}
-          </option>
-        ))}
-      </select>
-
-      {/* Test the theme */}
+    <h1 className="text-2xl font-bold mb-6">Choose a theme for your chat interface</h1>
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      {daisyThemes.map((themeName) => (
+        <button
+          key={themeName}
+          onClick={() => setTheme(themeName)}
+          className={`btn justify-start text-left capitalize
+            ${theme === themeName 
+              ? 'btn-primary' 
+              : 'btn-ghost bg-base-200 hover:bg-base-300'}
+          `}
+        >
+          {themeName.replace(/-/g, ' ')}
+        </button>
+      ))}
     </div>
+  </div>
   );
 };
 
