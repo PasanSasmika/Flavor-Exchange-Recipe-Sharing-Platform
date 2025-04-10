@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import food1 from '/image.jpg'; // Replace with actual food images
-import food2 from '/image.jpg';
-import food3 from '/image.jpg';
-import chef from '/image.jpg';
+import food1 from '/img8.jpg'; // Replace with actual food images
+import food2 from '/img2.jpg';
+import food3 from '/img7.jpg';
+import chef from '/img5.jpg';
 import { Link } from 'react-router-dom';
 
 const Story = () => {
@@ -37,7 +37,7 @@ const Story = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
-                <span className="text-white font-bold text-lg">Signature Dish</span>
+                <span className="text-white font-bold text-lg">Inspiring Home Chefs</span>
               </div>
             </div>
             
@@ -48,7 +48,7 @@ const Story = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
-                <span className="text-white font-bold text-lg">Fresh Ingredients</span>
+                <span className="text-white font-bold text-lg">Share the Taste</span>
               </div>
             </div>
             
@@ -59,7 +59,7 @@ const Story = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
-                <span className="text-white font-bold text-lg">Memorable Dining</span>
+                <span className="text-white font-bold text-lg">Fresh Ideas, Flavourful Creations</span>
               </div>
             </div>
           </motion.div>
@@ -78,7 +78,7 @@ const Story = () => {
                 className="w-full h-96 object-cover rounded-2xl"
               />
               <div className="absolute -bottom-6 -right-6 bg-rose-500 text-white p-6 rounded-xl shadow-xl">
-                <span className="block text-2xl font-bold">15+</span>
+                <span className="block text-2xl font-bold">15K+</span>
                 <span className="block">Of Connecting Food Lovers Worldwide</span>
               </div>
             </div>

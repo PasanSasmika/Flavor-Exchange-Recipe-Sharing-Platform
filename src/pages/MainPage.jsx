@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import home from '/image.jpg';
+import home2 from '/img6.jpg';
 import { Link } from 'react-router-dom';
 
 
@@ -17,7 +18,7 @@ const MainPage = () => {
             >
               <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-300 mb-6"></div>
               <h2 className="font-primary text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Sharing Culinary <span className="text-amber-400">Passions</span> Since 1995
+              Where Culinary  <span className="text-amber-400">Passions</span> Come to Life
               </h2>
               <p className="font-secondary text-gray-300 mb-8 text-lg leading-relaxed">
               Flavor Exchange started as a simple idea: to connect home cooks and food lovers worldwide. Today, we continue that mission by bringing together
@@ -71,7 +72,7 @@ const MainPage = () => {
                 className="w-3/4 h-64 bg-gray-800 rounded-xl overflow-hidden absolute -bottom-20 right-0 shadow-2xl border-4 border-white/10 z-10"
               >
                 <img
-                  src={home}
+                  src={home2}
                   alt="Signature dish"
                   className="w-full h-full object-cover"
                 />
