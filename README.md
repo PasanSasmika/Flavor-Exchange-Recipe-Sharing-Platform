@@ -58,7 +58,7 @@ bash
 Copy
 Edit
 npm start
-The app should now be running on http://localhost:3000.
+The app should now be running on http://localhost:5173.
 
 📋 Usage
 Sign Up/Login: Start by creating an account or logging in to access full features like adding/editing/deleting recipes. 📝
