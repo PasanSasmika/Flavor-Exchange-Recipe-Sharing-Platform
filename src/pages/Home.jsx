@@ -9,12 +9,20 @@ const Home = () => {
   const [search, setSearch] = useState('');
   const { recipes } = useRecipes();
   const { user, toggleFavorite, favorites } = useAuth();
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(search.toLowerCase()) ||
-  recipe.mealType.toLowerCase().includes(search.toLowerCase())
-
-  );
+  const categories = ['Vegan', 'Vegetarian', 'Gluten-Free', 'Dairy-Free', 'Keto'];
+  
+  const filteredRecipes = recipes.filter((recipe) => {
+    const matchesSearch = 
+      recipe.title.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.mealType.toLowerCase().includes(search.toLowerCase());
+    
+    const matchesCategory = 
+      selectedCategory ? recipe.category === selectedCategory : true;
+    
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     // Recipes page
@@ -46,6 +54,21 @@ const Home = () => {
       <FiSearch className="w-5 h-5" />
     </button>
   </div>
+  <div className="flex flex-wrap justify-center gap-2 mt-4">
+  {categories.map((category) => (
+    <button
+      key={category}
+      onClick={() => setSelectedCategory(category === selectedCategory ? null : category)}
+      className={`px-4 py-1 rounded-4xl border transition-colors ${
+        selectedCategory === category
+          ? 'bg-blue-500 text-white border-blue-500'
+          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+      }`}
+    >
+      {category}
+    </button>
+  ))}
+</div>
 </div>
       </div>
 
@@ -67,7 +90,7 @@ const Home = () => {
                   />
                    <div className="absolute bottom-2 left-2  bg-opacity-70  px-2 py-1 rounded-4xl border">
                    <p className="font-secondary text-sm">
-                     {recipe.mealType}
+                     {recipe.category}
                      </p>
                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -75,6 +98,9 @@ const Home = () => {
                 <CardContent className="flex-grow p-4 md:p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2 font-secondary">
                     {recipe.title}
+                  </h3>
+                  <h3 className="text-sm  text-gray-800 mb-2 line-clamp-2 font-secondary">
+                    {recipe.mealType}
                   </h3>
                   <div className="text-sm text-gray-600 space-y-2 mb-4">
                     <div className="flex items-center">
@@ -118,14 +144,17 @@ const Home = () => {
                   ? `We couldn't find any recipes matching "${search}"`
                   : 'Add some recipes to get started!'}
               </p>
-              {search && (
-                <button 
-                  onClick={() => setSearch('')}
-                  className="mt-4 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors"
-                >
-                  Clear search
-                </button>
-              )}
+              {(search || selectedCategory) && (
+      <button 
+        onClick={() => {
+          setSearch('');
+          setSelectedCategory(null);
+        }}
+        className="mt-4 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors"
+      >
+        Clear filters
+      </button>
+    )}
             </div>
           </div>
         )}
