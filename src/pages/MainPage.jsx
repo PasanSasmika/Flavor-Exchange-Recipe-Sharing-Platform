@@ -18,7 +18,7 @@ const MainPage = () => {
             >
               <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-300 mb-6"></div>
               <h2 className="font-primary text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Sharing Culinary <span className="text-amber-400">Passions</span> Since 1995
+              Where Culinary  <span className="text-amber-400">Passions</span> Come to Life
               </h2>
               <p className="font-secondary text-gray-300 mb-8 text-lg leading-relaxed">
               Flavor Exchange started as a simple idea: to connect home cooks and food lovers worldwide. Today, we continue that mission by bringing together

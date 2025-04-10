@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import home from '/bg.jpg';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const { login } = useAuth();
@@ -18,9 +19,10 @@ const Login = () => {
     
     if (storedUser && storedUser.email === form.email && storedUser.password === form.password) {
       login(storedUser);
+      toast.success('Login Successful')
       navigate('/');
     } else {
-      alert('Invalid email or password. Please sign up first.');
+      toast.error ('Invalid email or password. Please try again.');
     }
   };
 
