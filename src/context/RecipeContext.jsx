@@ -17,7 +17,7 @@ export const RecipeProvider = ({ children }) => {
   }, [recipes]);
 
   const addRecipe = (newRecipe) => {
-    setRecipes((prev) => [...prev, newRecipe]);
+    setRecipes((prev) => [...prev,{ ...newRecipe, reviews: [] }]);
   };
 
   const deleteRecipe = (recipeId, username) => {
@@ -28,6 +28,17 @@ export const RecipeProvider = ({ children }) => {
     );
   };
 
+  const addReview = (recipeId, review) => {
+    setRecipes((prev) =>
+      prev.map((recipe) =>
+        recipe.id === recipeId
+          ? { ...recipe, reviews: [...(recipe.reviews || []), review] }
+          : recipe
+      )
+    );
+  };
+
+
   const updateRecipe = (updatedRecipe) => {
     setRecipes((prev) =>
       prev.map((recipe) =>
@@ -37,7 +48,7 @@ export const RecipeProvider = ({ children }) => {
   };
 
   return (
-    <RecipeContext.Provider value={{ recipes, addRecipe, deleteRecipe, updateRecipe }}>
+    <RecipeContext.Provider value={{ recipes, addRecipe, deleteRecipe, updateRecipe, addReview }}>
       {children}
     </RecipeContext.Provider>
   );
