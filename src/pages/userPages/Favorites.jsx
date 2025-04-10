@@ -44,14 +44,6 @@ const Favorite = () => {
                         </Typography>
                       </Box>
                     </Box>
-
-                    <Link
-                     to={`/recipe/${recipe.id}`} 
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium text-sm"
-                    >
-                      View recipe
-                      <FiArrowRight className="ml-1.5" />
-                    </Link>
                   </CardContent>
                 </Card>
               ))}

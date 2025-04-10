@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import home from '/image.jpg';
+import home2 from '/img6.jpg';
 import { Link } from 'react-router-dom';
 
 
@@ -71,7 +72,7 @@ const MainPage = () => {
                 className="w-3/4 h-64 bg-gray-800 rounded-xl overflow-hidden absolute -bottom-20 right-0 shadow-2xl border-4 border-white/10 z-10"
               >
                 <img
-                  src={home}
+                  src={home2}
                   alt="Signature dish"
                   className="w-full h-full object-cover"
                 />
